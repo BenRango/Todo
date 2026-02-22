@@ -1,10 +1,10 @@
 services:
   todo-app:
     container_name: elia
-    image: elia
+    image: benrango/elia
     restart: always
     ports:
-      - 80:80
+      - 4003:80
   todo-server:
     container_name: todo-server
     image: benrango/todo-server:latest

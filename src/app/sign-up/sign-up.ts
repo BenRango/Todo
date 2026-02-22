@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class SignUp {
   lastStep = false
+  password = ""
+  confirmPassword = ""
   swapStep() {
     this.lastStep = !this.lastStep
   }
   constructor(private router : Router) {}
+  
   navigate(route: string) {
     this.router.navigate([route]);
   }

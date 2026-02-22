@@ -46,7 +46,7 @@ label{
         width: 100%;
         height: 100%;
     }
-    &__password{
+    &__password, &__email{
         position: absolute;
         right: 15px; 
         top: 42px;
@@ -54,6 +54,11 @@ label{
     }
     &__checkbox{
         margin-right: 10px;
+    }
+    &__email{
+        :hover{
+            cursor: default;
+        }
     }
 }
 
@@ -75,11 +80,18 @@ input {
         border-width: 2px;
         color: black;
     }
-
+    
     @media (max-width : 768px) {
         width: 280px; 
         height: 40px;
         font-size: 1rem;
+    }
+
+}
+.input--error{
+    border-color: #EF4444;
+    &:focus, &:hover {
+        border-color: #EF4444;
     }
 }
 .passwordValidation{
@@ -90,7 +102,7 @@ input {
 }
 :host {
     display: block;   
-    width: 100%;      
+    width: 80%;      
     max-width: 460px; 
     box-sizing: border-box;
 }

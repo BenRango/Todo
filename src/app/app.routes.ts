@@ -5,6 +5,7 @@ export const routes: Routes = [
     
     {path: 'input-form', loadComponent: () => import('./input-form/input-form').then(m => m.InputForm)},
     {path: 'register', loadComponent: () => import('./sign-up/sign-up').then(m => m.SignUp)},
+    {path: 'password-bar', loadComponent: () => import('./password-strenght-bar/password-strenght-bar').then(m => m.PasswordStrenghtBar)},
     {path: '**', redirectTo: ''}
 
 ];
