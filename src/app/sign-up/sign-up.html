@@ -1,0 +1,33 @@
+<main>
+    <article class="mainContainer">
+        <section class="formSection">
+            <img src="/logo/image.png" alt="Logo de l'application" class="logo">
+            <div class="stepWrapper">
+                <article>
+                    <h3>{{lastStep ? "Étape 2/2" : "Étape 1/2"}}</h3>
+                    <p>{{ lastStep ? "Sécurisation du compte" : "Validaion d'email" }}</p>
+                </article>
+                <img src="/images/step{{lastStep ? 2 : 1}}.png" alt="" style="width: 100%;">
+            </div>
+            
+            <h2>{{lastStep ? "PRESQUE FINI !" : "C'EST PARTI !"}} </h2>
+            <p>{{lastStep ? "Dernière ligne droite pour configurer votre espace." : "Entrez votre email, on s'occupe du reste"}}</p>
+            <form action="" (submit)="$event.preventDefault()">
+                <app-input-form type="email" placeholder="Entrez votre adresse email" label="Email"/>
+                @if (lastStep) {
+                    <app-input-form type="text" placeholder="Entrez votre nom complet" label="Nom complet"/>
+                    <app-input-form type="password" placeholder="Entrez votre mot de passe" label="Mot de passe"/>
+                    <app-input-form type="password" placeholder="Confirmez votre mot de passe" label="Confirmez votre mot de passe"/>
+                    <app-input-form type="checkbox" label="Souviens-toi de moi"/> 
+                }
+                
+                <button (click)="swapStep()" type="button"> {{lastStep ? "Précédent" : "Suivant"}}</button>
+                <div>Vous avez déjà un compte ? <a href="" class="link" (click)="navigate('login')"  >Connectez-vous</a></div>
+            </form>
+        </section>
+        
+        <section class="secondSection">
+
+        </section>
+    </article>
+</main>

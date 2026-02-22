@@ -1,0 +1,20 @@
+<main>
+    <article class="mainContainer">
+        <section class="formSection">
+            <img src="/logo/image.png" alt="Logo de l'application" class="logo">
+            <h2>BIENVENUE</h2>
+            <p>Connectez-vous à votre espace sécurisé</p>
+            <form action="" (submit)="$event.preventDefault()">
+                <app-input-form type="text" placeholder="Entrez votre adresse email" label="Email"/>
+                <app-input-form type="password" placeholder="Entrez votre mot de passe" label="Password" [login]="true"/>
+                <app-input-form type="checkbox" label="Souviens-toi de moi"/> 
+                <button>Se connecter</button>
+                <div>Pas de compte ? <a class="link" (click)="navigate('register')" >Inscrivez-vous</a></div>
+            </form>
+        </section>
+        
+        <section class="secondSection">
+
+        </section>
+    </article>
+</main>

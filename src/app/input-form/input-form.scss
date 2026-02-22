@@ -1,0 +1,96 @@
+main{
+    width: 100% ;
+}
+*{
+    font-family: "Poppins", sans-serif;
+}
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    width: 100%; 
+    & section{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+label{
+    color: #696981;
+    margin-bottom: 10px;
+}
+.icon {
+    
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 5px;
+    
+    width: 35px; 
+    height: 35px;
+    border: none;
+    border-radius: 50%; 
+    transition: background-color 0.2s;
+    color: #666; 
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    &__password{
+        position: absolute;
+        right: 15px; 
+        top: 42px;
+        z-index: 2;
+    }
+    &__checkbox{
+        margin-right: 10px;
+    }
+}
+
+input {
+    border: 1px solid #E4E4E4;
+    background-color: #F9FAFB;
+    padding: 3px 60px 3px 30px; 
+    outline: none; 
+    font-size: 0.9rem;
+    height: 40px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &:focus, &:hover {
+        
+        border-color: #336AEA;
+    }
+    &:focus{
+        border-width: 2px;
+        color: black;
+    }
+
+    @media (max-width : 768px) {
+        width: 280px; 
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+.passwordValidation{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    gap: 5px;
+}
+:host {
+    display: block;   
+    width: 100%;      
+    max-width: 460px; 
+    box-sizing: border-box;
+}
