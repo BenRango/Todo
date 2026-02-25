@@ -10,7 +10,8 @@ main{
     background-color: wheat;
 }
 .logo{
-    margin: 95px 0px;
+    margin-top: 85px ;
+    margin-bottom: 80px ;
     width: 62%;
 }
 h2{
@@ -117,7 +118,7 @@ button {
 .formButton{
     
     &-disabled{
-        background-color: gray !important;
+        background-color: rgb(51 106 234, 0.4) !important;
         &:hover{
             border: none;
             border-width: 0px;
