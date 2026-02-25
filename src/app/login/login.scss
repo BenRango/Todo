@@ -44,7 +44,7 @@ section{
 }
 form{
     padding-top: 50px;
-    width: 95%;
+    width: 80%;
     background-color: white;
     height: 100%;
     display: flex;
@@ -69,7 +69,7 @@ button {
     justify-content: center;
     font-size: 1rem;
     outline: none; 
-    width: 80% !important;
+    width: 100% !important;
 
     height: 50px;
     border-radius: 10px;
@@ -113,4 +113,14 @@ button {
     background-position: center;
 
     background-repeat: no-repeat;
+}
+.formButton{
+    
+    &-disabled{
+        background-color: gray !important;
+        &:hover{
+            border: none;
+            border-width: 0px;
+        }
+    }
 }

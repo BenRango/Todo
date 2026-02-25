@@ -4,24 +4,39 @@
             <img src="/logo/image.png" alt="Logo de l'application" class="logo">
             <div class="stepWrapper">
                 <article>
-                    <h3>{{lastStep ? "Étape 2/2" : "Étape 1/2"}}</h3>
-                    <p>{{ lastStep ? "Sécurisation du compte" : "Validaion d'email" }}</p>
+                    <h3>{{lastStep() ? "Étape 2/2" : "Étape 1/2"}}</h3>
+                    <p>{{ lastStep() ? "Sécurisation du compte" : "Validaion d'email" }}</p>
                 </article>
-                <img src="/images/step{{lastStep ? 2 : 1}}.png" alt="" style="width: 100%;">
+                <img src="/images/step{{lastStep() ? 2 : 1}}.png" alt="" style="width: 100%;">
+                <h2>{{lastStep() ? "PRESQUE FINI !" : "C'EST PARTI !"}} </h2>
+                <p>{{lastStep() ? "Dernière ligne droite pour configurer votre espace." : "Entrez votre email, on s'occupe du reste"}}</p>
             </div>
             
-            <h2>{{lastStep ? "PRESQUE FINI !" : "C'EST PARTI !"}} </h2>
-            <p>{{lastStep ? "Dernière ligne droite pour configurer votre espace." : "Entrez votre email, on s'occupe du reste"}}</p>
+            
             <form action="" (submit)="$event.preventDefault()">
-                <app-input-form type="email" placeholder="Entrez votre adresse email" label="Email"/>
-                @if (lastStep) {
-                    <app-input-form type="text" placeholder="Entrez votre nom complet" label="Nom complet"/>
+                <app-input-form type="email" placeholder="Entrez votre adresse email" label="Email" [disabled]="lastStep()" (validChange)="isEmailValid.set($event)" />
+                @if (lastStep()) {
+
+                    <!-- <app-input-form type="text" placeholder="Entrez votre nom complet" label="Nom complet"/>
                     <app-input-form type="password" placeholder="Entrez votre mot de passe" label="Mot de passe" [isSetter]="true" [(value)]="password"/>
                     <app-input-form type="password" placeholder="Confirmez votre mot de passe" label="Confirmez votre mot de passe" [witness]="password" [(value)]="confirmPassword"/>
                     <app-input-form type="checkbox" label="Souviens-toi de moi"/> 
+                 -->
+                    @for (input of inputs(); track input.label) {
+                      <app-input-form 
+                        [type]="input.type" 
+                        [placeholder]="input.placeholder" 
+                        [label]="input.label" 
+                        [isSetter]="input.isSetter" 
+                        [value]="input.value"
+                        [witness]="input.witness"
+                        (validChange)="input.onValidChange($event)"
+                        (valueChange)="input.onUpdate($event)"
+                      />
+                    }
                 }
                 
-                <button (click)="swapStep()" type="button"> {{lastStep ? "Précédent" : "Suivant"}}</button>
+                <button (click)="!lastStep()? swapStep() : signUpCheck()" type="button" [disabled]="!isFormValid()" [class]="'formButton ' + (isFormValid() ? 'formButton-enabled' : 'formButton-disabled')"> {{lastStep() ? "Terminer" : "Suivant"}}</button>
                 <div>Vous avez déjà un compte ? <a href="" class="link" (click)="navigate('login')"  >Connectez-vous</a></div>
             </form>
         </section>

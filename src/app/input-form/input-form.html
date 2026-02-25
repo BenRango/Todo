@@ -30,21 +30,24 @@
         
         <input 
           [type]="isPasswordVisible() ? 'text' : type()" 
-          [placeholder]="placeholder()" 
-          [(value)]="value"
+          [placeholder]="placeholder()"
+          [disabled]="disabled()"
           (input)="onInput($event)"
-          class="{{type() === 'password' && !isSetter() && value() !== witness() ? 'input--error' : ''}}"
+          (blur)="onBlur()"
+          [class]="inputClass()" 
         />
-        @if(!login() && type() === "password" && isSetter() && value().length > 0) {
-          <app-password-evaluator [value]="value()"></app-password-evaluator>
-        } @else if (type() === "password" && !isSetter() && value() !== witness()) {
-          <span style="color : #EF4444">Les mots de passe ne correspondent pas</span>
+        @if(!login() && type() === "password" && isSetter() && value()!.length > 0) {
+          <app-password-evaluator [value]="value()!"></app-password-evaluator>
+        } @else if (!login() && type() === "password" && !isSetter() && isTouched() && value()! !== witness() && value()!.length > 0) {
+          <span class ='input--error-text' >Les mots de passe ne correspondent pas</span>
+        } @else if (type() === 'email' && !isEmail() && isTouched() &&value()!.length > 0) {
+          <span class ='input--error-text' >Adresse e-mail invalide</span>
         }
         
       </section>
       
        
-      @if (value().length > 0) {
+      @if (value()!.length > 0) {
           <button type="button" class="icon {{type()==='password' ? 'icon__password' : 'icon__email'}}" (click)="toggleVisibility()">
           @if (type() === 'password') {
             @if (isPasswordVisible()) {
@@ -55,10 +58,17 @@
             } @else {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
             }
-          } @else if (type() === 'email') {
+          } @else if (type() === 'email' && isEmail()) {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="#6DC152"/>
-              <path d="M8.40399 15.6706L3.50977 10.7764L5.48971 8.79649L8.40399 11.7107L14.5493 5.56543L16.5292 7.54532L8.40399 15.6706Z" fill="white"/>
+              <g clip-path="url(#clip0_219_523)">
+                <path d="M10 0C4.48583 0 0 4.48583 0 10C0 15.5142 4.48583 20 10 20C15.5142 20 20 15.5142 20 10C20 4.48583 15.5142 0 10 0Z" fill="#28A745"/>
+                <path d="M15.0683 7.88087L9.65167 13.2975C9.57445 13.3752 9.48265 13.4368 9.38154 13.4789C9.28043 13.5209 9.17201 13.5426 9.0625 13.5426C8.95299 13.5426 8.84457 13.5209 8.74345 13.4789C8.64234 13.4368 8.55054 13.3752 8.47333 13.2975L5.765 10.5892C5.68763 10.5118 5.62625 10.42 5.58438 10.3189C5.54251 10.2178 5.52096 10.1095 5.52096 10C5.52096 9.89062 5.54251 9.78227 5.58438 9.68118C5.62625 9.58009 5.68763 9.48824 5.765 9.41087C5.84237 9.3335 5.93422 9.27213 6.03531 9.23025C6.1364 9.18838 6.24475 9.16683 6.35417 9.16683C6.46358 9.16683 6.57193 9.18838 6.67302 9.23025C6.77411 9.27213 6.86596 9.3335 6.94333 9.41087L9.0625 11.53L13.89 6.70254C14.0463 6.54628 14.2582 6.4585 14.4792 6.4585C14.7001 6.4585 14.9121 6.54628 15.0683 6.70254C15.2246 6.85879 15.3124 7.07072 15.3124 7.2917C15.3124 7.51268 15.2246 7.72461 15.0683 7.88087Z" fill="#FAFAFA"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_219_523">
+                  <rect width="20" height="20" fill="white"/>
+                </clipPath>
+              </defs>
             </svg>
           } @else {
             <!-- 

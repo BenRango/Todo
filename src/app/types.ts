@@ -1,0 +1,1 @@
+export type inputTypes = "text" | "password" | "email" | "checkbox"
