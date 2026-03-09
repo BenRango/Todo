@@ -24,7 +24,7 @@
         <article style="display: flex;"> 
           <label style="margin-right: auto !important;">{{ label() }}</label> 
           @if (type()=== "password" && login()) {
-            <span style="display: flex; font-size: 12px; font-weight: 500; align-items: center; color: #242442">Mot de passe oublié ?</span>
+            <span class="forgotten-password" (click)="navigate('forgotten-password')">Mot de passe oublié ?</span>
           }
         </article>
         

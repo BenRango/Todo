@@ -1,11 +1,11 @@
-import { inject, Inject, Injectable, OnInit, PLATFORM_ID } from '@angular/core';
+import { inject, Inject, Injectable, OnInit, PLATFORM_ID, signal } from '@angular/core';
 
 import { UserService } from './user.service';
 import {jwtDecode} from 'jwt-decode';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environment.mjs';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { User } from '../user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,8 @@ export class AuthService implements OnInit{
   response: {message: string} | null = null;
   user= inject(UserService)
   confirmPassword = ""
+  newPassword = signal<string>("")
+  newPasswordConfirm = signal<string>("")
   constructor( 
     private http: HttpClient,
       @Inject(PLATFORM_ID) private platformId: Object 
@@ -31,8 +33,20 @@ export class AuthService implements OnInit{
         return rep.user
       })))
   }
+
+  resetPassword(otp : string) {
+    return (
+      this.http.patch<{token: string, user: User}>(`${environment.apiUrl}/auth/reset-password`, {otp, password : this.newPassword(), confirmPassword: this.newPasswordConfirm()})
+      .pipe(tap(rep =>
+        {
+          console.log(rep)
+          return null
+        })
+      ))
+  }
   redirectToExternal() {
-    window.location.href = 'https://elia.benrango.com';
+    const token = localStorage.getItem('token');
+    window.location.href = `${environment.host}?token=${token}`;
   }
   logIn() {
     this.response = null
@@ -44,6 +58,34 @@ export class AuthService implements OnInit{
         localStorage.setItem("token", rep.token);
         this.turnTologgedIn(rep.token);
       }),
+      catchError(error => {
+        if (error.error && error.error.message) {
+          this.response = { message: error.error.message };
+        } else {
+          this.response = { message: "Une erreur est survenue" };
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+  checkOTP(otp : string){
+    this.response = null
+    return this.http.get(`${environment.apiUrl}/auth/otp/${otp}`).pipe(
+      catchError(error => {
+        if (error.error && error.error.message) {
+          this.response = { message: error.error.message };
+        } else {
+          this.response = { message: "Une erreur est survenue" };
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+  generateOTP(){
+    this.response = null
+    return this.http.post(`${environment.apiUrl}/auth/generate-otp`, {
+      email: this.user.getEmail(),  
+    }).pipe(
       catchError(error => {
         if (error.error && error.error.message) {
           this.response = { message: error.error.message };

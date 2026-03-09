@@ -111,3 +111,13 @@ input {
     max-width: 460px; 
     box-sizing: border-box;
 }
+.forgotten-password{
+    display: flex; 
+    font-size: 12px; 
+    font-weight: 500; 
+    align-items: center; 
+    color: #242442;
+    &:hover{
+        cursor: pointer;
+    }
+}

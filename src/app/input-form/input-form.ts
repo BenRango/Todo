@@ -1,5 +1,6 @@
 import { Component, computed, effect, EventEmitter, input, model, output, signal } from '@angular/core';
 import { PasswordEvaluator } from "../password-evaluator/password-evaluator";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-input-form',
@@ -85,8 +86,10 @@ export class InputForm {
   hasNumber(): boolean {
     return /[0-9]/.test(this.value()!);
   }
-
-  constructor() {
+  navigate(route : string){
+    this.router.navigate(['/' + route])
+  }
+  constructor(private router : Router) {
     effect(() => {
       this.validChange.emit(this.isValid());
     });

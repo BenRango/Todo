@@ -1,0 +1,21 @@
+<form [formGroup]="otpForm" class="otp-container">
+  @for (control of otpControls; track $index) {
+    <input
+      #otpInput
+      type="text"
+      maxlength="1"
+      class="otp-input"
+      [formControl]="control" 
+      (input)="onInput($event, $index)"
+      (keydown)="onKeyDown($event, $index)"
+      (paste)="onPaste($event)"
+      inputmode="numeric"
+      autocomplete="one-time-code"
+    />
+  } 
+
+</form>
+
+<!-- @if (isLoading()) {
+  <p>Vérification en cours...</p>
+} -->

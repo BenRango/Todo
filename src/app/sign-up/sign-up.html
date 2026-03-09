@@ -14,14 +14,9 @@
             
             
             <form action="" (submit)="$event.preventDefault()">
-                <app-input-form type="email" placeholder="Entrez votre adresse email" label="Email" [disabled]="lastStep()" (validChange)="isEmailValid.set($event)" />
+                <app-input-form [value]="email()" type="email" placeholder="Entrez votre adresse email" label="Email" [disabled]="lastStep()" (validChange)="isEmailValid.set($event)" (valueChange)="onEmailChange($event)"/>
                 @if (lastStep()) {
 
-                    <!-- <app-input-form type="text" placeholder="Entrez votre nom complet" label="Nom complet"/>
-                    <app-input-form type="password" placeholder="Entrez votre mot de passe" label="Mot de passe" [isSetter]="true" [(value)]="password"/>
-                    <app-input-form type="password" placeholder="Confirmez votre mot de passe" label="Confirmez votre mot de passe" [witness]="password" [(value)]="confirmPassword"/>
-                    <app-input-form type="checkbox" label="Souviens-toi de moi"/> 
-                 -->
                     @for (input of inputs(); track input.label) {
                       <app-input-form 
                         [type]="input.type" 

@@ -118,7 +118,7 @@ button {
 .formButton{
     
     &-disabled{
-        background-color: rgb(51 106 234, 0.4) !important;
+        background-color: rgb(51,106,234, 0.4) !important;
         &:hover{
             border: none;
             border-width: 0px;

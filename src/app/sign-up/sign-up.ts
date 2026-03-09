@@ -1,9 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { InputForm } from "../input-form/input-form";
 import { Router } from '@angular/router';
 import { inputTypes } from '../types';
 import { InputInterface } from '../input-interface';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,6 +15,7 @@ import { AuthService } from '../services/auth.service';
 export class SignUp {
   loading = false
   lastStep = signal(false);
+  user = inject(UserService)
   email = signal("");
   name = signal("");
   password = signal("");
@@ -24,6 +26,9 @@ export class SignUp {
   confirmValid = signal(false);
   checkBoxValid = signal(false);
   auth= inject(AuthService)
+  onEmailChange (v?: string){
+    this.email.set(v!)
+  }
   inputs = computed<InputInterface[]>(() => [
     { 
       type: "text", 
@@ -84,6 +89,10 @@ export class SignUp {
   signUpCheck() {
     try {
       this.loading = true;
+      this.user.email = this.email()
+      this.user.username = this.name()
+      this.user.password = this.password()
+      this.auth.confirmPassword = this.confirmPassword()
       this.auth.signUp().subscribe({
         next: () => {
           this.auth.redirectToExternal()
