@@ -1,0 +1,36 @@
+.mainContainer{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    flex: 1;
+}
+.sliderButton{
+    margin-right: auto;
+}
+.infos{
+    display: flex;
+    max-height: 42px;
+    gap: 10px;
+    align-items: center;
+    & img{
+        width: 42px;
+        height: 42px;
+    }
+    & svg{
+        margin-right: 10px;
+    }
+    & select{
+        border: none;
+        background: transparent;
+        font-size: 18px;
+        appearance: none; /* Supprime le style par défaut */
+        -webkit-appearance: none;
+        background-image: url("/icons/arrowdown.svg");
+        background-repeat: no-repeat;
+        padding-right: 20px;
+        background-position: right 10px ;
+    }
+}
+:host{
+    width: 100%;
+}

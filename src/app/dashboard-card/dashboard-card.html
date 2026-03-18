@@ -1,0 +1,7 @@
+<article>
+    <img [src]="card()?.icon" alt="icon">
+    <section>
+        <p> {{card()?.label || "Label"}} </p>
+        <h2> {{card()?.value || 0 }} </h2>
+    </section>
+</article>

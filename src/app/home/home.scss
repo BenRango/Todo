@@ -1,0 +1,78 @@
+.mainContainer{
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #F0F2F5;
+}
+.sidebar{
+    background-color: rgb(255, 255, 255);
+    min-width: 272px !important ;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    border-right: #E8E8E8 1px solid;
+    height: 100%;
+    //gap: 10px;
+    width: 12%;
+    & .logo{
+        margin-top: 25px ;
+        margin-bottom: 80px ;
+        width: 80%;
+    }
+    & div {
+        width: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        outline: none; 
+
+        height: 64px;
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        color: #1F1F1F;
+        &.active{
+            color: white ;
+            border: 1px solid #E4E4E4;
+            background-color: #336AEA;
+            & svg{
+                color: white;
+            }
+        }
+        & svg{
+            color: black;
+            margin-right: 15px;
+            margin-left: 40px;
+        }
+        &:focus, &:hover {
+            outline: 2px #336AEA;
+            background-color: #6dc4ffaf;
+        }
+        &:focus{
+            background-color: #2955BB;
+            color: black;
+        }
+
+        @media (max-width : 768px) {
+            width: 280px; 
+            height: 40px;
+            font-size: 1rem;
+        }
+    }
+}
+.maincontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+}
+.cardsContainer {
+  //padding: 0px 20px;
+  display: flex;
+  width: 100%; 
+  gap: 20px;   
+  align-items: stretch; 
+  background-color: transparent; 
+}

@@ -8,7 +8,7 @@ main{
     position: relative;
     display: flex;
     align-items: center;
-    width: fit-content;
+    //width: fit-content;
     height: fit-content;
     width: 100%; 
     & section{
@@ -108,7 +108,7 @@ input {
 :host {
     display: block;   
     width: 100%;      
-    max-width: 460px; 
+    //max-width: 500px; 
     box-sizing: border-box;
 }
 .forgotten-password{

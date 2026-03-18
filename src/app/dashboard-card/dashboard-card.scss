@@ -1,0 +1,30 @@
+article {
+  display: flex;
+  flex: 1; 
+  min-width: 200px;
+  background-color: white;
+  padding: 20px; 
+  border-radius: 20px;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+  //width: 100%;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #A3AED0;
+}
+h2{
+    font-size: 28px;
+    font-weight: 600;
+    color: #2B3674;
+}
+:host{
+    width: 23.8%;
+}
