@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
-  private token : string = ""
+  private token ?: string = ""
   response: {message: string} | null = null;
   user= inject(UserService)
   confirmPassword = ""
@@ -128,9 +128,9 @@ export class AuthService implements OnInit{
     this.user.setUsername(decodedToken.username)
     return decodedToken.exp < currentTime
   }
-  getToken():string | "token"
+  getToken():string | undefined
   {
-    this.token = this.user.getToken()
+    this.token = this.user.getToken() || localStorage.getItem('token') || undefined
     return this.token
   }
   getUser()
