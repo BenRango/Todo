@@ -31,6 +31,25 @@ h2{
     font-weight: 600;
     color: #2B3674;
 }
+@media (max-width : 768px) {
+    article{
+        min-width: unset;
+        padding: 10px 15px;
+    }
+    section{
+        width: fit-content;
+    }
+    img{
+        height: 50px;
+        width: 50px;
+    }
+    p{
+        font-size: 11px;
+    }
+    h2{
+        font-size: 18px
+    }
+}
 :host{
     width: 25%
 }

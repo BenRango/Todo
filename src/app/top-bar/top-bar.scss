@@ -8,7 +8,10 @@
 }
 .sliderButton{
     margin-right: auto;
+    width: 60px;
+    height: 60px;
 }
+
 .infos{
     display: flex;
     max-height: 42px;
@@ -20,18 +23,45 @@
     }
     & svg{
         margin-right: 10px;
+        width: 24px;
+        height: 24px;
     }
     & select{
         border: none;
         background: transparent;
         font-size: 18px;
-        appearance: none; /* Supprime le style par défaut */
+        appearance: none; 
         -webkit-appearance: none;
         background-image: url("/icons/arrowdown.svg");
         background-repeat: no-repeat;
         padding-right: 25px;
         background-position: right 10px ;
     }
+}
+@media (max-width: 768px) {
+    .mainContainer{
+        height: 50px;
+        padding: 0px 5px;
+    }
+    img{
+        width: 24px !important;
+        height: 24px !important;
+    }
+    .infos{
+        & svg{
+            margin-right: 0px;
+            width: 16px !important;
+            height: 16px !important;
+        }
+        & select{
+            font-size: 12px ;
+            padding-right: 20px;
+        }
+    }
+    .sliderButton{
+    width: 40px;
+    height: 40px;
+}
 }
 :host{
     width: 100%;

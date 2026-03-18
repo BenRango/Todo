@@ -1,7 +1,7 @@
 <article class="mainContainer">
     <app-sidebar />
         
-    <section class="maincontent">
+    <section class="maincontent" [class.mobile]="isSmall">
         <app-top-bar />
         <article class="content">
             <app-welcome />

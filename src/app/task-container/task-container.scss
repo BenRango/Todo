@@ -7,6 +7,10 @@ section{
     width: 100%;
     gap: 10px;
 }
+svg{
+    width: 60px;
+    height: 60px
+}
 h3{
     font-size: 24px;
     color: #2B3674;
@@ -18,7 +22,18 @@ p{
 .noTaskIcon{
     margin-bottom: 20px;
 }
-
+@media (max-width : 768px) {
+    svg{
+        width: 32px;
+        height: 32px;
+    }
+    p{
+        font-size: 10px;
+    }
+    h3{
+        font-size: 16px;
+    }
+}
 :host{
     height: 100%;
     width: 100%;

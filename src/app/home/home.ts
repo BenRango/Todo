@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DashboardCard } from "../dashboard-card/dashboard-card";
 import { TopBar } from "../top-bar/top-bar";
 import { Welcome } from "../welcome/welcome";
@@ -7,6 +7,7 @@ import { DashboardNavBar } from "../dashboard-nav-bar/dashboard-nav-bar";
 import { Sidebar } from "../sidebar/sidebar";
 import { TaskContainer } from "../task-container/task-container";
 import { DashboardCardInterface } from '../dashboard-card-interface';
+import { ScreenSizeService } from '../services/screen-size.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,10 @@ import { DashboardCardInterface } from '../dashboard-card-interface';
   styleUrl: './home.scss',
 })
 export class Home {
+  screenSizeService = inject(ScreenSizeService)
+  get isSmall() {
+    return this.screenSizeService.isSmallScreen();
+  }
   tabs = [
     { label: "Tableau de bord", route : "home", selected: true },
     { label: "Calendrier", route : "calendar", selected: false },

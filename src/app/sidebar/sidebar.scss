@@ -1,3 +1,28 @@
+section {
+  height: 100dvh;
+  //width: 312px;
+  display: flex;
+}
+.hamburger-btn {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001 !important;
+  background: none;
+  & *{
+    color: white;
+  }
+  border: none;
+  & *{
+    font-size: 1.5rem;
+  }
+  
+  cursor: pointer;
+  color: inherit;
+}
+
 .sidebar{
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -5,13 +30,37 @@
     align-items: center;
     border-right: #E8E8E8 1px solid;
     height: 100%;
-    width: 312px !important;
+    width: 312px ;
+    transition: 0.2s all ease;
+    &-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+    }
+    &-mobile {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%); 
+        width: 250px;
+        z-index: 200;
+        & .tabContainer{
+            width: 80% !important;
+        }
+        &.open {
+        transform: translateX(0); 
+        }
+    }
     & .logo{
         margin-top: 40px ;
         margin-bottom: 80px ;
         width: 72%;
     }
-    & div {
+    & .tabContainer {
         width: 272px;
         cursor: pointer;
         display: flex;
@@ -46,9 +95,13 @@
         }
 
         @media (max-width : 768px) {
-            width: 280px; 
+            //width: 280px; 
             height: 40px;
             font-size: 1rem;
+            border-radius: 10px;
+            & svg{
+                margin-left: 15px;
+            }
         }
     }
 }

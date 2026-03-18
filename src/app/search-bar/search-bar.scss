@@ -27,6 +27,11 @@ section{
         }
     }
 }
+@media (max-width : 768px) {
+    section{
+        min-width: unset;
+    }
+}
 :host{
     height: 90% !important;
 }
