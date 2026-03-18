@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { SearchBar } from "../search-bar/search-bar";
 
 @Component({
   selector: 'app-welcome',
-  imports: [],
+  imports: [SearchBar],
   templateUrl: './welcome.html',
   styleUrl: './welcome.scss',
 })

@@ -1,0 +1,17 @@
+.mainContainer{
+    display: flex;
+    align-items: center;
+    height: 49px;
+    & div{
+        margin-right: auto;
+    }
+}
+h2{
+    font-size: 24px;
+    font-weight: 550;
+    color: #252544;
+}
+.subtitle{
+    font-size: 12px;
+    color: #6D6D6D;
+}

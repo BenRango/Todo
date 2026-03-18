@@ -1,7 +1,12 @@
 <article>
-    <img [src]="card()?.icon" alt="icon">
+    @if (!card()?.after) {
+        <img [src]="card()?.icon" alt="icon">
+    }
     <section>
         <p> {{card()?.label || "Label"}} </p>
         <h2> {{card()?.value || 0 }} </h2>
     </section>
+    @if (card()?.after) {
+        <img [src]="card()?.icon" alt="icon" style="margin-left: auto;">
+    }
 </article>

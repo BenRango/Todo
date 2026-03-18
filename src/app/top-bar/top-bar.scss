@@ -3,6 +3,8 @@
     align-items: center;
     height: 80px;
     flex: 1;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 0px 20px;
 }
 .sliderButton{
     margin-right: auto;
@@ -27,7 +29,7 @@
         -webkit-appearance: none;
         background-image: url("/icons/arrowdown.svg");
         background-repeat: no-repeat;
-        padding-right: 20px;
+        padding-right: 25px;
         background-position: right 10px ;
     }
 }

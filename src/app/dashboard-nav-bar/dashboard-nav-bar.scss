@@ -1,0 +1,19 @@
+section{
+    width: 100%;
+    display: flex;
+    gap: 45px;
+    border-bottom: 1px solid #A3AED0;
+    height: 47px;
+    color: #A3AED0;
+    & div{
+        cursor: pointer;
+    }
+    & .selected, div:hover{
+        font-weight: 600;
+        color: #2955BB;
+    }
+    *{
+        font-size: 18px;
+    }
+}
+

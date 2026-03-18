@@ -1,0 +1,58 @@
+.mainContainer{
+    width: auto;
+    height: 130px;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.subContainer{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+    width: 96%;
+    & *{
+        border-radius: 10px;
+        height: 70px;
+    }
+}
+.addButton{
+    background-color: #2955BB;
+    border-radius: 15px !important;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-width: 70px !important;
+    height: 70px;
+}
+input{
+    outline: none;
+    border: none;
+    background-color: #F4F7FE;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0px 30px;
+    width: 77%;
+    //max-width: 1100px;
+}
+select{
+    appearance: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #046789;
+    -webkit-appearance: none;
+    padding: 0px 30px;
+    width: 13%;
+    //max-width: 180px;
+    background-color: #F4F7FE;
+    background-image: url("/icons/blackArrowDown.svg");
+    background-repeat: no-repeat;
+    background-position: right 25px center;
+    & option{
+        display: flex;
+    }
+}

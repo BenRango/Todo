@@ -1,0 +1,5 @@
+<section>
+    @for (tab of tabs(); track $index) {
+        <div (click)="tab.action()" [class]="tab.selected? 'selected': ''"> {{tab.label}} </div>
+    }
+</section>
